@@ -38,7 +38,7 @@ const AddNewProductForm = () => {
 	return (
 		<>
 			<p className='text-3xl tracking-tighter my-5 font-medium text-center'>
-				Create <RotatedText>Premium</RotatedText> Post
+				Create Premium Post
 			</p>
 
 			<form

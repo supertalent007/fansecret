@@ -18,6 +18,8 @@ const UserProfile = async () => {
 			email: currentUser?.email!,
 		},
 	});
+
+
 	return (
 		<div className='flex flex-col'>
 			<CoverImage adminName={admin?.name!} />

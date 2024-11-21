@@ -67,7 +67,7 @@ const ContentTab = () => {
   return (
     <>
       <p className="text-3xl my-5 font-bold text-center uppercase">
-        <UnderlinedText className="decoration-wavy">Create</UnderlinedText> New Post
+     Create New Post
       </p>
 
       <form

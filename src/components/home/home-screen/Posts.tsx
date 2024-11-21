@@ -8,7 +8,7 @@ import { getPostsAction } from "./actions";
 import { getUsersAction } from "./actions";
 import { useEffect , useState} from "react";
 import UserPage from "./UserPage";
-import {HandleCredits} "fs/promises";
+// import {HandleCredits} "fs/promises";
 
 
 const Posts = ({

@@ -43,8 +43,6 @@ const HomeScreen = async ({ query = null }: any) => {
   return (
     <BaseLayout>
       <UserProfile />
-   
-      <Posts isCreater={user?.isCreater} admin={admin!} isSubscribed={user?.isSubscribed} query={query} />
     </BaseLayout>
   );
 };

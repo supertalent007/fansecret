@@ -1,16 +1,14 @@
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
-  Shirt,
   Home,
-  LayoutDashboard,
   User,
   Bell,
   Coins,
   MessageCircle,
   Lock,
   Settings,
-  PieChart
+
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -30,7 +28,8 @@ const SIDEBAR_LINKS = [
     icon: Home,
     label: "Home",
     href: "/",
-  },  {
+  }
+  ,  {
   	icon: User,
   	label: "Profile",
   	href: "/update-profile",
@@ -52,14 +51,10 @@ const SIDEBAR_LINKS = [
     href: "/messages",
   },
 
-  {
-  	icon: PieChart,
-  	label: "Admin",
-  	href: "/vault",
-  },
+
 ];
 
-const Sidebar = async ({ id }: { id: string }) => {
+const AdminSidebar = async ({ id }: { id: string }) => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
@@ -158,6 +153,6 @@ const Sidebar = async ({ id }: { id: string }) => {
     </div>
   );
 };
-export default Sidebar;
+export default AdminSidebar;
 
 // sprint ++

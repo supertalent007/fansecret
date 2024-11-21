@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Prisma } from "@prisma/client";
-import {HandleCredits} "fs/promises";
+// import {HandleCredits} "fs/promises";
 
 type CommentWithUser = Prisma.CommentGetPayload<{
 	include: {
