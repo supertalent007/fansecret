@@ -10,7 +10,8 @@ import {
   MessageCircle,
   Lock,
   Settings,
-  PieChart
+  PieChart,
+  DollarSign
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -56,6 +57,11 @@ const SIDEBAR_LINKS = [
   	icon: PieChart,
   	label: "Admin",
   	href: "/vault",
+  },
+  {
+    icon: DollarSign,
+    label: "Payout",
+    href: "/payout",
   },
 ];
 

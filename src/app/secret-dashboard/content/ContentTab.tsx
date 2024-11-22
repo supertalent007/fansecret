@@ -13,7 +13,8 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Textarea } from "@/components/ui/textarea";
+import { Textarea, } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 import { useMutation } from "@tanstack/react-query";
 import { TriangleAlert } from "lucide-react";
 import {
@@ -34,7 +35,7 @@ const ContentTab = () => {
   const [isPublic, setIsPublic] = useState<boolean>(false);
   const [mediaUrl, setMediaUrl] = useState<string>("");
   const [tags, setTags] = useState("");
-
+  const [price, setPrice] = useState("")
   const [sheduled, setSheduled] = useState<Date | null | String>(null);
 
   const { toast } = useToast();
@@ -98,6 +99,7 @@ const ContentTab = () => {
             <div className="grid gap-2">
               <Label htmlFor="content">hashtags (comma separated)</Label>
               <Textarea
+              value={tags}
                 id="content"
                 placeholder="Share today's exclusive"
                 required
@@ -105,8 +107,19 @@ const ContentTab = () => {
               />
             </div>
             <div className="grid gap-2">
+              <Label htmlFor="content">Price (Optional)</Label>
+              <Input
+              value={price}
+              min="0" 
+              type="number"
+                id="price"
+                placeholder="Share today's exclusive"
+                required
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </div>
+            <div className="grid gap-2">
               <Label htmlFor="content">Sheduling time (Optional)</Label>
-            
               <CustomDatePicker
                 selectedDate={sheduled}
                 setSelectedDate={setSheduled}

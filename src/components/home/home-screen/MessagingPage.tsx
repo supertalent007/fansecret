@@ -11,7 +11,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import {HandleCredits} "fs/promises";
+// import {HandleCredits} "fs/promises";
 
 
 

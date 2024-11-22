@@ -8,6 +8,7 @@ import {
   MessageCircle,
   Lock,
   Settings,
+  DollarSign
 
 } from "lucide-react";
 import {
@@ -50,6 +51,7 @@ const SIDEBAR_LINKS = [
     label: "Messages",
     href: "/messages",
   },
+
 
 
 ];
