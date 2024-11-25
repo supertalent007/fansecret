@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import prisma from "@/db/prisma";
 import { getUserProfileAction } from "@/app/update-profile/actions";
+import CreatePost from "@/components/CreatePost";
 
 const UserProfile = async () => {
 
@@ -56,6 +57,7 @@ const UserProfile = async () => {
 				</div>
 			</div>
 			<div aria-hidden='true' className='h-2 w-full bg-muted' />
+			<CreatePost></CreatePost>
 		</div>
 	);
 };

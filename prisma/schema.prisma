@@ -67,6 +67,7 @@ model Post {
   isPublic   Boolean   @default(false)
   isSheduled String?
   hashtags   String?
+  price      Int?
   comments   Comment[]
   likesList  Like[]
 

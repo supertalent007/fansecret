@@ -60,7 +60,7 @@ const SIDEBAR_LINKS = [
   },
   {
     icon: DollarSign,
-    label: "Payout",
+    label: "Financials",
     href: "/payout",
   },
 ];

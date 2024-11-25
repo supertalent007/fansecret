@@ -11,13 +11,9 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
+import {  MessageCircle } from "lucide-react";
 // import {HandleCredits} "fs/promises";
 
-
-
-
-
-// Custom Input Component
 const Input = ({ className, ...props }) => (
   <input
     className={`p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
@@ -34,7 +30,8 @@ const Button = ({ children, className, ...props }) => (
     {children}
   </button>
 );
-const MessagingPage = ({ receiverId , senderId}) => {
+
+const MessagingPage = ({ receiverId , senderId, style, body=false}) => {
     const searchParams = useSearchParams();
     const id = searchParams.get('id'); 
 
@@ -78,9 +75,13 @@ const MessagingPage = ({ receiverId , senderId}) => {
   }, []); 
 
   return (
-    <div className="flex h-screen flex-col justify-end ">
+    <div style={style} className="flex h-screen flex-col justify-end  ">
       {/* Messages List */}
-      <div className="p-4 overflow-auto ">
+      {body&& <div className="flex justify-center items-center mb-[40vh] flex-col gap-5 ">
+        <div className=" font-bold text-xl">Start Chating...</div>
+  <MessageCircle className="w-16 h-16"></MessageCircle>
+       </div>}
+      <div  style={style} className="p-4 overflow-auto ">
         {fetchedMessages.map((message) => (
           <div
             key={message?.id}

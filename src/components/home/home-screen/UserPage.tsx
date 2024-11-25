@@ -47,6 +47,7 @@ type PostWithComments = Prisma.PostGetPayload<{
 }>;
 
 const UserPage = ({
+  style,
 onClick,
   post,
   isSubscribed,
@@ -91,7 +92,7 @@ onClick,
   }
 
   return (
-    <div onClick={handleClick} className="flex flex-col gap-3 p-3 border-t">
+    <div style={style}  onClick={handleClick} className="flex flex-col gap-3 p-3 border-t">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Avatar>

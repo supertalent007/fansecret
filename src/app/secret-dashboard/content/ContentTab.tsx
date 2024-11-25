@@ -26,10 +26,14 @@ import Image from "next/image";
 import { use, useState } from "react";
 import { createPostAction } from "../actions";
 import { useToast } from "@/components/ui/use-toast";
+import { useSearchParams } from "next/navigation";
+
 
 import CustomDatePicker from "@/components/ui/datepicker";
 
 const ContentTab = () => {
+  const searchParams = useSearchParams();
+	const title = searchParams.get('title');
   const [text, setText] = useState("");
   const [mediaType, setMediaType] = useState<"video" | "image">("video");
   const [isPublic, setIsPublic] = useState<boolean>(false);
@@ -93,6 +97,7 @@ const ContentTab = () => {
                 id="content"
                 placeholder="Share today's exclusive"
                 required
+                defaultValue={title?title:""}
                 onChange={(e) => setText(e.target.value)}
               />
             </div>

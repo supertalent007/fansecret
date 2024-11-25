@@ -5,6 +5,7 @@ import { getUsersAction } from "@/components/home/home-screen/actions";
 import { useState, useEffect } from "react";
 
 import { useSearchParams } from "next/navigation";
+import MessagingPage from "@/components/home/home-screen/messagingPage";
 
 const Page = () => {
   const searchParams = useSearchParams();
@@ -14,40 +15,47 @@ const Page = () => {
 
   const [fetchedUsers, setFetchedUsers] = useState([]);
   useEffect(() => {
-
     const fetchUsers = async () => {
       const users = await getUsersAction();
       console.log(users, "IFNAL USERS");
       setFetchedUsers(users);
     };
-    
+
     fetchUsers();
   }, []);
 
   return (
-    <div className="w-full lg:w-4.8/5 flex flex-col border-r">
-
+    <div className="w-[40vw] lg:w-4.8/5 flex  border-r">
       <div className="mt-5"></div>
-      {fetchedUsers?.map((user) => {
-        if (user?.id == id) {
-          return;
-        }
-
-        if(!isCreater){
-          if(!user?.isCreater){
-            return
+      <div className=" w-[40vw]  lg:w-4.8/5 flex flex-col  border-r">
+        {fetchedUsers?.map((user) => {
+          if (user?.id == id) {
+            return;
           }
-        }
-        return (
-          <UserPage
-            id={user?.id}
-            key={user?.id}
-            post={user}
-            admin={false}
-            isSubscribed={false}
-          />
-        );
-      })}
+
+          if (!isCreater) {
+            if (!user?.isCreater) {
+              return;
+            }
+          }
+          return (
+            <>
+              <UserPage
+              style={{width:"40vw"}}
+                id={user?.id}
+                key={user?.id}
+                post={user}
+                admin={false}
+                isSubscribed={false}
+              />
+            </>
+          );
+        })}
+      </div>
+      <div >
+      <MessagingPage body={"Tap on User to start Chating"} style={{width:"55vw"}} />
+      </div>
+
     </div>
   );
 };
