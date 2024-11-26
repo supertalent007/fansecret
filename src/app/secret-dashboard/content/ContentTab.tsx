@@ -68,13 +68,11 @@ const ContentTab = () => {
       });
     },
   });
-
   return (
     <>
       <p className="text-3xl my-5 font-bold text-center uppercase">
      Create New Post
       </p>
-
       <form
         onSubmit={(e) => {
           e.preventDefault();
