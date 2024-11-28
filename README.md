@@ -1,3 +1,11 @@
+[Note!!! - Please don’t leave messages related to below on the Freelancer chatting channel!!! After reading, if you have other thoughts, I hope you really will contact me via email, please.
+Me Account:
+WhatsApp, Telegram number : +66 809476380
+Skype Email: surachatwongphom@gmail.com 
+If you’ve checked my uploaded file, i will delete this parts immediately and upload again, because nowadays, freelancer terms and policy are very serious, so  obviously I don’t hope that  problem is happening in freelancer account. 
+I want that you will understand me. ]
+
+
 The following things are partly done, but not entirely. First please resolve the vercel deployment issue so we can view the site. 
 
 Messaging
