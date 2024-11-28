@@ -1,12 +1,3 @@
-[I sent new email with yours. Can i use your email to communicate from now?
-	
-	The content is below:
-
-	Please invite again my another email account - surchat1013@gmail.com
-	Because it was my developer account.
-
-Sorry to repeat.]
-
 
 The following things are partly done, but not entirely. First please resolve the vercel deployment issue so we can view the site. 
 
