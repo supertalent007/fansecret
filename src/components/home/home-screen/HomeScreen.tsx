@@ -14,39 +14,40 @@ const HomeScreen = async ({ query = null }: any) => {
 
 
   try {
-    const body = {
-      id: user?.id,
-      email: user?.email,
-      name: user?.name,
-      image: user?.image, 
-      isSubscribed: false,
-      customerId: "3",
-      isCreater: false,
-    };
     if (user) {
+      const body = {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        image: user.image, 
+        isSubscribed: false,
+        customerId: "3",
+        isCreater: false,
+        referralId: "default-referral-id",
+      };
+
       console.log(user, "USER ACTUAL");
+      const users = await prisma.user.create({
+        data: body,
+      });
+
+      console.log("USER POSTED :", users);
+      const admin = user.isCreater || false;
+    
+      console.log("email", admin);
+    
+      if (!user) return notFound();
+    
+      return (
+        <BaseLayout>
+          <UserProfile />
+          <Posts isCreater={user.isCreater} admin={user} isSubscribed={user.isSubscribed} query={query} />
+        </BaseLayout>
+      );
     }
-    const users = await prisma.user.create({
-      data: body,
-    });
-    console.log("USER POSTED :", users);
   } catch (error) {
     console.log("USER FETCHING ERROR: ", error);
   }
-
-  const admin = user?.isCreater || false;
-
-  console.log("email", admin);
-
-  if (!user) return notFound();
-
-  return (
-    <BaseLayout>
-      <UserProfile />
-   
-      <Posts isCreater={user?.isCreater} admin={admin!} isSubscribed={user?.isSubscribed} query={query} />
-    </BaseLayout>
-  );
 };
 export default HomeScreen;
 

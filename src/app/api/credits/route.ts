@@ -2,7 +2,7 @@
 import prisma from "@/db/prisma";
 
 // Define the PUT handler as an exported constant
-export const GET = async (req) => {
+export const GET = async (req: any) => {
   try {
     // Parse JSON payload
     const { id } = await req.json(); // Parses the JSON body correctly if sent as JSON
@@ -28,7 +28,7 @@ export const GET = async (req) => {
 
 
 
-export const POST = async (req) => {
+export const POST = async (req: any ) => {
     try {
       // Parse JSON payload
       const { id } = await req.json(); // Parses the JSON body correctly if sent as JSON

@@ -22,7 +22,7 @@ const CreaterVerificationForm = ({ user }: any) => {
   const router = useRouter();
 
   console.log(user, "user inn form")
-  const handleOnSubmit = async (e) => {
+  const handleOnSubmit = async (e : any) => {
     e.preventDefault();
 
     try {
@@ -38,7 +38,7 @@ const CreaterVerificationForm = ({ user }: any) => {
       console.log("UPDATED USER:", res.data);
       router.push("/");
       router.refresh(); 
-    } catch (error) {
+    } catch (error : any) {
       console.error("Error response:", error.response);
       alert(`Error: ${error.response?.data?.error}`);
     }

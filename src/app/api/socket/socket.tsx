@@ -2,7 +2,7 @@
 import { initSocket } from "../../../socket/socket";
 
 
-export default function handler(req, res) {
+export default function handler(req: any, res: any) {
   if (res.socket.server.io) {
     console.log("Socket.io already running");
   } else {

@@ -19,6 +19,8 @@ const Posts = ({
 }: {
   isSubscribed: boolean;
   admin: User;
+  query: any;
+  isCreater : boolean;
 }) => {
   const { data: posts, isLoading } = useQuery({
     queryKey: ["posts"],
@@ -27,12 +29,12 @@ const Posts = ({
 
   const [fetchedUsers, setFetchedUsers] = useState([])
   useEffect(()=>{
-	const fetchUsers = async ()=>{
-		const users = await getUsersAction()
-		console.log(users, "IFNAL USERS")
-		setFetchedUsers(users)
-	}
-	fetchUsers()
+    const fetchUsers = async ()=>{
+      const users: any = await getUsersAction()
+      console.log(users, "IFNAL USERS")
+      setFetchedUsers(users)
+    }
+    fetchUsers()
   },[])
   
   
@@ -59,19 +61,21 @@ const Posts = ({
                 />
               );
             })
-          : fetchedUsers?.map((user) => {
-            // filter conditiion for users
-			if ( !( user?.name.toLowerCase().includes(query.toLowerCase()))) {
-				return
-			}
-      if(!isCreater){
-        if(!user?.isCreater){
-          return
-        }
-      }
+          : fetchedUsers?.map((user: any) => {
+              // filter conditiion for users
+              if ( !( user?.name.toLowerCase().includes(query.toLowerCase()))) {
+                return
+              }
+              if(!isCreater){
+                if(!user?.isCreater){
+                  return
+                }
+              }
            
               return (
                 <UserPage
+                  style={{width: "40vw"}}
+                  id={user?.id}
                   key={user?.id}
                   post={user}
                   admin={false}

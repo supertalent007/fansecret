@@ -23,7 +23,7 @@ const sizeMap: { [key: string]: string } = {
 };
 
 
-const ReferralForm = ({params}) => {
+const ReferralForm = ({params} : any) => {
     const user = params.accountId
   const [role, setRole] = useState("fan");
   const router = useRouter();

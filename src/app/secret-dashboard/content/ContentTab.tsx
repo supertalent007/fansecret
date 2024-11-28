@@ -40,7 +40,7 @@ const ContentTab = () => {
   const [mediaUrl, setMediaUrl] = useState<string>("");
   const [tags, setTags] = useState("");
   const [price, setPrice] = useState("")
-  const [sheduled, setSheduled] = useState<Date | null | String>(null);
+  const [sheduled, setSheduled] = useState<Date | null>(null);
 
   const { toast } = useToast();
 
@@ -58,7 +58,7 @@ const ContentTab = () => {
       setIsPublic(false);
       setMediaUrl("");
       setTags("");
-      setSheduled("");
+      setSheduled(null);
     },
     onError: (error) => {
       toast({

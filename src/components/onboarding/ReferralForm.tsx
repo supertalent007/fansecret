@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-const ReferralForm =  ({user}) => {
+const ReferralForm =  ({user} : any) => {
   const [name, setName] = useState("");
   const router = useRouter();
   console.log(user, "USER IDdddd ")

@@ -1,14 +1,14 @@
 import BaseLayout from "@/components/BaseLayout";
 import ProductCard from "@/components/ProductCard";
 import UnderlinedText from "@/components/decorators/UnderlinedText";
-import prisma from "@/db/prisma";
+// import prisma from "@/db/prisma";
 
 const Page = async () => {
-	const products = await prisma.product.findMany({
-		where: {
-			isArchived: false,
-		},
-	});
+	// const products = await prisma.product.findMany({
+	// 	where: {
+	// 		isArchived: false,
+	// 	},
+	// });
 
 	return (
 		<BaseLayout renderRightPanel={false}>
@@ -18,9 +18,9 @@ const Page = async () => {
 				</h1>
 
 				<div className='grid gap-5 grid-cols-1 md:grid-cols-2'>
-					{products.map((product) => (
+					{/* {products.map((product) => (
 						<ProductCard key={product.id} product={product} />
-					))}
+					))} */}
 				</div>
 			</div>
 		</BaseLayout>

@@ -12,7 +12,7 @@ const sizeMap: { [key: string]: string } = {
 	lg: "Large",
 };
 
-const Page = ({params}) => {
+const Page = ({params} : any) => {
     const user = params.accountId
     console.log("USER FROM PARAMS", user)
 

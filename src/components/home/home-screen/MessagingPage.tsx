@@ -1,5 +1,3 @@
-
-
 "use client";
 import React, { useEffect, useState } from "react";
 import {
@@ -14,7 +12,7 @@ import { useSearchParams } from "next/navigation";
 import {  MessageCircle } from "lucide-react";
 // import {HandleCredits} "fs/promises";
 
-const Input = ({ className, ...props }) => (
+const Input = ({ className, ...props }: any) => (
   <input
     className={`p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
     {...props}
@@ -22,7 +20,7 @@ const Input = ({ className, ...props }) => (
 );
 
 // Custom Button Component
-const Button = ({ children, className, ...props }) => (
+const Button = ({ children, className, ...props }: any) => (
   <button
     className={`bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors ${className}`}
     {...props}
@@ -31,7 +29,7 @@ const Button = ({ children, className, ...props }) => (
   </button>
 );
 
-const MessagingPage = ({ receiverId , senderId, style, body=false}) => {
+const MessagingPage = ({ receiverId , senderId, style, body=false}: any) => {
     const searchParams = useSearchParams();
     const id = searchParams.get('id'); 
 
@@ -52,9 +50,8 @@ const MessagingPage = ({ receiverId , senderId, style, body=false}) => {
 
   const fetchMessages = async () => {
     try {
-        const body ={
-            senderId,
-        
+        const body : any = {
+          senderId,
         }
         console.log("SenderId", senderId)
         console.log("ReceivedId", receiverId)
@@ -82,7 +79,7 @@ const MessagingPage = ({ receiverId , senderId, style, body=false}) => {
   <MessageCircle className="w-16 h-16"></MessageCircle>
        </div>}
       <div  style={style} className="p-4 overflow-auto ">
-        {fetchedMessages.map((message) => (
+        {fetchedMessages.map((message : any) => (
           <div
             key={message?.id}
             className={`mb-4 flex items-start ${
@@ -122,7 +119,7 @@ const MessagingPage = ({ receiverId , senderId, style, body=false}) => {
             type="text"
             placeholder="Type a message..."
             value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
+            onChange={(e : any) => setNewMessage(e.target.value)}
             className="flex-grow mr-2"
           />
           <Button onClick={handleOnPost}>Send</Button>

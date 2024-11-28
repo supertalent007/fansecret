@@ -3,10 +3,10 @@ import BaseLayout from "@/components/BaseLayout";
 import UserPage from "@/components/home/home-screen/UserPage";
 import FanVerificationForm from "@/components/onboarding/FanVerificationForm";
 
- const frequencies: PricingTierFrequency[] = [
-	{ id: "1", value: "1", label: "Monthly", priceSuffix: "/month" },
-	{ id: "2", value: "2", label: "Annually", priceSuffix: "/year" },
-];
+// const frequencies: PricingTierFrequency[] = [
+// 	{ id: "1", value: "1", label: "Monthly", priceSuffix: "/month" },
+// 	{ id: "2", value: "2", label: "Annually", priceSuffix: "/year" },
+// ];
 
 const sizeMap: { [key: string]: string } = {
 	sm: "Small",
@@ -15,7 +15,7 @@ const sizeMap: { [key: string]: string } = {
 };
 
 
-const Page = ({params}) => {
+const Page = ({params} : any) => {
     const user = params.accountId
     console.log("USER FROM PARAMS", user)
 

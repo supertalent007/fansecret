@@ -16,7 +16,7 @@ const MessagesSidebar = () => {
   useEffect(() => {
 
     const fetchUsers = async () => {
-      const users = await getUsersAction();
+      const users : any = await getUsersAction();
       console.log(users, "IFNAL USERS");
       setFetchedUsers(users);
     };
@@ -28,7 +28,7 @@ const MessagesSidebar = () => {
     <div className="w-full lg:w-4.8/5 flex flex-col border-r">
 
       <div className="mt-5"></div>
-      {fetchedUsers?.map((user) => {
+      {fetchedUsers?.map((user : any) => {
         if (user?.id == id) {
           return;
         }
@@ -40,6 +40,7 @@ const MessagesSidebar = () => {
         }
         return (
           <UserPage
+            style = {{width: "40vw"}}
             id={user?.id}
             key={user?.id}
             post={user}

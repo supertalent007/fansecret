@@ -10,6 +10,8 @@ type PostArgs = {
   mediaUrl?: string;
   mediaType?: "image" | "video";
   isPublic: boolean;
+  tags: any;
+  sheduled: any;
 };
 
 export async function createPostAction({

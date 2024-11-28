@@ -5,36 +5,28 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { User } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
-
 export async function getUserProfileAction() {
 	const { getUser } = getKindeServerSession();
 	const user = await getUser();
 
-
-
-
 	if (!user) return null;
 
-
 	try {
-	
 		const currentUser = await prisma.user.findUnique({ where: { id: user.id } });
 		console.log(user, "yahannnnnnn")
 		console.log(currentUser, "CURRRENT")
 		if (!currentUser) {
 			const body = {
-		
-				email:  user.email,
+				id: user.id,
+				email: user.email!,
 				name: user.given_name + " " + user.family_name,
 				image: user.picture,
 				isSubscribed: false,
-				id: user.id,
 				isCreater:false,
-				customerId:"4"
-
-			
+				customerId:"4",
+				referralId: "default-referral-id",
 			  }
-		
+
 			const users = await prisma.user.create({
 				data: body
 			  });
@@ -43,17 +35,8 @@ export async function getUserProfileAction() {
 		}
 		return currentUser;
 	} catch (error) { 
-		
 			console.log("user is not in db", error)
-
-			
-		
-			
-		
 	}
-	
-
-
 }
 
 export async function updateUserProfileAction({ name, image }: { name: string; image: string }) {
