@@ -1,10 +1,10 @@
 import Image from "next/image";
 import AuthButtons from "./AuthButtons";
-
+import Footer from "@/components/Footer";
 const HeroSection = () => {
 	return (
 		<div className='flex h-screen w-full'>
-			<div className='flex-1 flex overflow-hidden bg-[#ffa885] relative justify-center items-center z-10 bg-noise'>
+			{/* <div className='flex-1 flex overflow-hidden bg-[#ffa885] relative justify-center items-center z-10 bg-noise'>
 				<img
 					src='/fansSecret-logo.jpeg'
 					alt='fansSecret-logo.jpeg'
@@ -38,6 +38,22 @@ const HeroSection = () => {
 					fill
 					className='object-cover opacity-90 pointer-events-none select-none h-full'
 				/>
+			</div> */}
+
+			<div
+				className="relative flex flex-col h-screen w-full bg-cover bg-center bg-no-repeat"
+				style={{
+					backgroundImage: "url('/fansSecret-logo.jpeg')",
+				}}>
+				
+				<div className="flex-1 flex justify-center items-center bg-black/50 text-white flex-col gap-2 px-4 xl:ml-40 text-center md:text-start">
+				<div className="flex gap-4">
+					<AuthButtons />
+					</div>
+				</div>
+				<footer className="w-full bg-black/50 text-white py-4 text-center">
+					<Footer />
+				</footer>
 			</div>
 		</div>
 	);
