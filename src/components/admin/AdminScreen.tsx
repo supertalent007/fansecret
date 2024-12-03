@@ -51,4 +51,4 @@ const HomeScreen = async ({ query = null }: any) => {
 export default HomeScreen;
 
 
-console.log("real user id", "sss");
+console.log("real user id: components\\admin\\AdminScreen", "sss");

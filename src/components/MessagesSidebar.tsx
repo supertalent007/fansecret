@@ -16,11 +16,11 @@ const MessagesSidebar = () => {
   useEffect(() => {
 
     const fetchUsers = async () => {
-      const users : any = await getUsersAction();
+      const users: any = await getUsersAction();
       console.log(users, "IFNAL USERS");
       setFetchedUsers(users);
     };
-    
+
     fetchUsers();
   }, []);
 
@@ -28,19 +28,19 @@ const MessagesSidebar = () => {
     <div className="w-full lg:w-4.8/5 flex flex-col border-r">
 
       <div className="mt-5"></div>
-      {fetchedUsers?.map((user : any) => {
+      {fetchedUsers?.map((user: any) => {
         if (user?.id == id) {
           return;
         }
 
-        if(!isCreater){
-          if(!user?.isCreater){
+        if (!isCreater) {
+          if (!user?.isCreater) {
             return
           }
         }
         return (
           <UserPage
-            style = {{width: "40vw"}}
+            style={{ width: "40vw", cursor: "pointer" }}
             id={user?.id}
             key={user?.id}
             post={user}

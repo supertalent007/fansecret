@@ -7,5 +7,7 @@ const AuthScreen = () => {
 			<HeroSection />			
 		</div>
 	);
+	
 };
+
 export default AuthScreen;

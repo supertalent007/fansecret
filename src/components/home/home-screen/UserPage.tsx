@@ -5,7 +5,9 @@ import { cn } from "@/lib/utils";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { Post as PostType, Prisma, User } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
 import { useRouter } from "next/navigation";
+
 import {
   Heart,
   ImageIcon,
@@ -16,7 +18,7 @@ import {
 import { CldVideoPlayer } from "next-cloudinary";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, MutableRefObject } from "react";
 import {
   commentOnPostAction,
   deletePostAction,
@@ -34,6 +36,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import Comment from "./Comment";
+import prisma from "@/db/prisma";
 
 type PostWithComments = Prisma.PostGetPayload<{
   include: {
@@ -53,21 +56,20 @@ const UserPage = ({
   isSubscribed,
   admin,
   id,
-  key
+  //key
 }: {
-  style : any;
-	// onClick: any;
+  style: any;
+  //onClick: any;
   post: any;
   isSubscribed: boolean;
   admin: any;
   id: any;
-  key: any;
+  //key: any;
 }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [comment, setComment] = useState("");
   const { user } = useKindeBrowserClient();
   const router = useRouter()
-
 
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -91,27 +93,33 @@ const UserPage = ({
     },
   });
 
-  const handleClick = ()=>{
-	router.push(`/messages/${id}`)
-  }
+  const messageChannelListItem = useRef() as MutableRefObject<HTMLDivElement>;
+
+  const onMouseEnter = () => {
+    messageChannelListItem.current.style.backgroundColor = "#ddeeee";
+  };
+
+  const onMouseLeave = () => {
+    messageChannelListItem.current.style.backgroundColor = "";
+  };
 
   return (
-    <div style={style}  onClick={handleClick} className="flex flex-col gap-3 p-3 border-t">
+    <div ref={messageChannelListItem} style={style} className="flex flex-col gap-3 p-3 border-t" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Avatar>
             <AvatarImage
-              src={post?.image || "/user-placeholder.png"}
+              src={(post?.image !== null || post?.image === "") ? "/user-placeholder.png" : post?.image}
               className="object-cover"
             />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <span className="font-semibold text-sm md:text-md">{post?.name}</span>
+          <span className="font-semibold text-sm md:text-md" style={{ cursor: "pointer" }}>{post?.name}</span>
         </div>
         <div className="flex gap-2 items-center">
-          <p className="text-zinc-400 text-xs md:text-sm tracking-tighter">
-            17.06.2024
-          </p>
+          {/* <p className="text-zinc-400 text-xs md:text-sm tracking-tighter">
+            17.08.2024
+          </p> */}
         </div>
       </div>
     </div>

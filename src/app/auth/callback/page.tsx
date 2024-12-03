@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 const Page = () => {
+	console.log("Athenea___________________");
 	const sizeMap: { [key: string]: string } = {
 		sm: "Small",
 		md: "Medium",

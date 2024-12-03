@@ -19,7 +19,7 @@ export const PUT = async (req: any) => {
     });
   } catch (error) {
     console.error("Error updating user:", error);
-    return new Response(JSON.stringify({ error: "Failed to update user." }), {
+    return new Response(JSON.stringify({ error: "Failed to update user2." }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });

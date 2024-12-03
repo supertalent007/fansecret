@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/providers/ThemeProvider";
 import Footer from "@/components/Footer";
 import TanStackProvider from "@/providers/TanStackProvider";
 import { Toaster } from "@/components/ui/toaster";
+import Loading from "@/components/Loading";
 
 const inter = Inter({ subsets: ["latin"] });
 

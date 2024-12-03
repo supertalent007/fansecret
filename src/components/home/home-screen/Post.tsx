@@ -115,7 +115,7 @@ const Post = ({ post, isSubscribed, admin }: { post: PostWithComments; isSubscri
 					<span className='font-semibold text-sm md:text-md'>{admin?.name}</span>
 				</div>
 				<div className='flex gap-2 items-center'>
-					<p className='text-zinc-400 text-xs md:text-sm tracking-tighter'>17.06.2024</p>
+					<p className='text-zinc-400 text-xs md:text-sm tracking-tighter'>17.09.2024</p>
 
 					{admin?.id === user?.id && (
 						<Trash

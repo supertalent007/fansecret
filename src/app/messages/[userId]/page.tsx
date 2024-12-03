@@ -11,13 +11,10 @@ const Page = async ({params}: any) => {
   const {getUser} = getKindeServerSession()
   const user = await getUser()
 
-
-
   return (
     <BaseLayout renderRightPanel={false}>
       <div className="mt-5"></div>
       <MessagingPage senderId={user?.id} receiverId={userId} />
-    
     </BaseLayout>
   );
 };

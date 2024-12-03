@@ -13,7 +13,7 @@ export async function getUserProfileAction() {
 
 	try {
 		const currentUser = await prisma.user.findUnique({ where: { id: user.id } });
-		console.log(user, "yahannnnnnn")
+		console.log("app\\update-profile\\action", user)
 		console.log(currentUser, "CURRRENT")
 		if (!currentUser) {
 			const body = {
