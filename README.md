@@ -25,7 +25,7 @@ Admin
 	-Banned words. Enable a banned words list. Any message or post attempted to be sent or posted by any user will just not post/send. The button just won’t work. Every time someone tries to use a banned word, a notification appears in the banned word page in admin so admin can see what they tried to post/send. Enable editing to the banned word list. 
 	-Messaging. Enable admin messaging to any user that will appear at the top of their messaging page in bold
 	-User Management. Search function for any user. See their userID, name, age, email, other information. Contain links to view their profile, all their content, all their messages. Button for suspension (with a space to type in the number of days), Button for account deletion, IP tracking data for that user, financial verification document, all history of that user on the account
-	-Sumsub. New users will be onboarded with sumsub. They will do ID verification for age and identity. I will need to be able to select certain US states or countries to “forget” information—so for example, for users from Florida I will need to forget their identity information. So there needs to be some way to set a “forget list”. Besides ID verification for age, I will also do financial verification. Users will need to upload some document showing income or assets (tax records, property records, W-2, etc., any document. 
+	-Sumsub. New users will be onboarded with sumsub. They will do ID verification for age and identity. Besides ID verification for age, I will also do financial verification. Users will need to upload some document showing income or assets (tax records, property records, W-2, etc., any document. 
 
 Login/signup
 	-simple login page with image background and login/signup
