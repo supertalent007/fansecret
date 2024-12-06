@@ -31,14 +31,14 @@ const Posts = ({
   useEffect(()=>{
     const fetchUsers = async ()=>{
       const users: any = await getUsersAction()
-      console.log(users, "IFNAL USERS")
+      // console.log(users, "IFNAL USERS")
       setFetchedUsers(users)
     }
     fetchUsers()
   },[])
   
   
-  console.log("QUERY: ", query);
+  //console.log("QUERY: ", query);
   return (
     <div>
 		<div className="text-balance  text-sm leading-loose text-muted-foreground md:text-left text-center my-[2%] w-[100%] ml-4"> { query && `Showing results for ${query.includes("%23") ? query.substring(3) : query}`}</div>
@@ -51,7 +51,7 @@ const Posts = ({
 			 if (!(post?.hashtags?.includes(filter))) {
 				return
 			 }
-			  console.log(post, "MAPPED POST WITH QUERY")
+			  // console.log(post, "MAPPED POST WITH QUERY")
               return (
                 <Post
                   key={post.id}
@@ -84,18 +84,18 @@ const Posts = ({
               );
             }))
         : posts?.map((post) => {
-			console.log(posts, 'MAPPED POSTS WITHOUT QUERY')
+			// console.log(posts, 'MAPPED POSTS WITHOUT QUERY')
 			if (post.isSheduled) {
-				console.log(post.isSheduled, "ACTUAL DATE ")
+				// console.log(post.isSheduled, "ACTUAL DATE ")
 				const scheduledDate = new Date(post.isSheduled);
      ;
             const currentDate = new Date();
-				console.log(scheduledDate, "SHEDULED DATE CONDITION OUTSIDE")
-				console.log(currentDate, "CURRENT DATE CONDITION OUTSIDE")
+				// console.log(scheduledDate, "SHEDULED DATE CONDITION OUTSIDE")
+				// console.log(currentDate, "CURRENT DATE CONDITION OUTSIDE")
 			if (currentDate < scheduledDate) {
-				console.log("CONDITION TRUE")
-				console.log(scheduledDate, "SHEDULED DATE")
-				console.log(currentDate, "CURRENT DATE")
+				// console.log("CONDITION TRUE")
+				// console.log(scheduledDate, "SHEDULED DATE")
+				// console.log(currentDate, "CURRENT DATE")
 				return
 			};
 			}

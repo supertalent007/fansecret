@@ -27,7 +27,7 @@ import { getUserProfileAction } from "@/app/update-profile/actions";
 const SIDEBAR_LINKS = [
   {
     icon: Home,
-    label: "Home",
+    label: "Home1",
     href: "/",
   }
   ,  {
@@ -38,22 +38,24 @@ const SIDEBAR_LINKS = [
   
   {
     icon: Coins,
-    label: "Premium",
+    label: "Premium1",
     href: "/merch",
   },
   {
     icon: Bell,
-    label: "Notifications",
+    label: "Notifications1",
     href: "/notifications",
   },
   {
     icon: MessageCircle,
-    label: "Messages",
+    label: "Messages1",
     href: "/messages",
   },
-
-
-
+  {
+    icon: MessageCircle,
+    label: "User Management",
+    href: "/mana_admin/user",
+  },
 ];
 
 const AdminSidebar = async ({ id }: { id: string }) => {
@@ -129,7 +131,7 @@ const AdminSidebar = async ({ id }: { id: string }) => {
           </div>
 
           <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {/*  this will be navigated to the analytics  */}
             {/* <Link href={process.env.STRIPE_BILLING_PORTAL_LINK_DEV + "?prefilled_email=" + user?.email}>   */}
@@ -140,7 +142,7 @@ const AdminSidebar = async ({ id }: { id: string }) => {
                 user?.email
               }
             >
-              <DropdownMenuItem>Your account</DropdownMenuItem>
+              <DropdownMenuItem>My account</DropdownMenuItem>
             </Link>
             {/* <DropdownMenuSeparator />
 						<Link href={process.env.STRIPE_BILLING_PORTAL_LINK_DEV + "?prefilled_email=" + user?.email}>

@@ -8,8 +8,5 @@ export default async function Search({params}:any) {
  
         console.log("Query Params: ", query);
   
-	
-	
-	
 	return <main>{ <HomeScreen query={query} /> }</main>;
 }

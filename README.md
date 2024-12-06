@@ -1,4 +1,3 @@
-
 The following things are partly done, but not entirely. First please resolve the vercel deployment issue so we can view the site. 
 
 Messaging

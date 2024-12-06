@@ -5,14 +5,6 @@ import React, { useEffect, useState } from "react";
 const LoadingWithoutImage: React.FC = () => {
     const [isVisible, setIsVisible] = useState(true);
 
-//   useEffect(() => {
-//     //Hide the loading screen after 2 seconds
-//     const timer = setTimeout(() => {
-//       setIsVisible(false);
-//     }, 2500);
-
-//     return () => clearTimeout(timer); // Cleanup timer on component unmount
-//   }, []);
 
   if (!isVisible) return null;
     return (

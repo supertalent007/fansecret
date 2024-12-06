@@ -18,7 +18,7 @@ const config = {
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
 				background: "hsl(var(--background))",
-		
+
 				foreground: "hsl(var(--foreground))",
 				primary: {
 					DEFAULT: "#FFBFA3",
@@ -73,6 +73,14 @@ const config = {
 					from: { transform: "translateY(0)" },
 					to: { transform: "translateY(calc(-100% - var(--gap)))" },
 				},
+				spin: {
+					'0%': {
+						transform: 'rotate(0deg)'
+					},
+					'100%': {
+						transform: 'rotate(360deg)'
+					}
+				}
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -80,6 +88,7 @@ const config = {
 				// magic ui
 				marquee: "marquee var(--duration) linear infinite",
 				"marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+				spin: 'spin 1.7s linear infinite'
 			},
 		},
 	},

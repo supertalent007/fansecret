@@ -11,7 +11,8 @@ export async function checkAuthStatus() {
 	if (!user) return { success: false };
 
 	const existingUser = await prisma.user.findUnique({ where: { id: user.id } });
-	// const referralId = generateUniqueReferralId(); // Implement your own logic
+	const referralId = await bcrypt.hash(Date.now().toString(), 10);
+
 	// sign up
 	if (!existingUser) {
 		console.log("here")
@@ -21,7 +22,7 @@ export async function checkAuthStatus() {
 				email: user.email!,
 				name: user.given_name + " " + user.family_name,
 				image: user.picture,
-				referralId: "default-referral-id",
+				referralId: referralId,
 			},
 		});
 	}

@@ -69,7 +69,6 @@ const ReferralForm = ({params} : any) => {
             </RadioGroup>
           </CardHeader>
 
-
           <CardFooter>
             <Button className="w-full" type="submit">
               Set

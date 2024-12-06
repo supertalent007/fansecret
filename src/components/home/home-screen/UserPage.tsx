@@ -94,7 +94,7 @@ const UserPage = ({
   });
 
   const messageChannelListItem = useRef() as MutableRefObject<HTMLDivElement>;
-
+  
   const onMouseEnter = () => {
     messageChannelListItem.current.style.backgroundColor = "#ddeeee";
   };
@@ -104,7 +104,7 @@ const UserPage = ({
   };
 
   return (
-    <div ref={messageChannelListItem} style={style} className="flex flex-col gap-3 p-3 border-t" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <div ref={messageChannelListItem} style={style} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className="flex flex-col gap-3 p-3 border-t" >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Avatar>

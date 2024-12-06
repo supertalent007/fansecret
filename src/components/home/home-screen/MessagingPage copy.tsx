@@ -11,7 +11,7 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { MessageCircleMore } from "lucide-react";
 // import {HandleCredits} "fs/promises";
-import  Chat  from "@/components/Chat";
+
 const Input = ({ className, ...props }: any) => (
   <input
     className={`p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
@@ -80,7 +80,6 @@ const MessagingPage = (props: any) => {
         </div>
       }
       <div style={props.style} className="p-4 overflow-auto">
-      {/* <Chat /> */}
         {fetchedMessages !== undefined && fetchedMessages.map((message: any) => (
           message?.senderId == id ?
             <div
@@ -98,7 +97,6 @@ const MessagingPage = (props: any) => {
                 <TooltipContent>{message?.user}</TooltipContent>
               </Tooltip>
             </TooltipProvider> */}
-           
 
               <div className="bg-blue-500 text-white text-end self-endrounded-lg p-3 max-w-xs" style={{ borderRadius: "15px", paddingBottom: '7px' }}>
                 <p className="text-sm"> {message?.content} </p>

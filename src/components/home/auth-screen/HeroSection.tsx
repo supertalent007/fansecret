@@ -1,12 +1,11 @@
 import Image from "next/image";
 import AuthButtons from "./AuthButtons";
-import Footer from "@/components/Footer";
+
 const HeroSection = () => {
 	return (
-
 		<div className='flex h-screen w-full'>
 			<div className='flex-1 flex overflow-hidden bg-[#ffa885] relative justify-center items-center z-10 bg-noise'>
- 				<img
+				<img
 					src='/fansSecret-logo.jpeg'
 					alt='fansSecret-logo.jpeg'
 					className='absolute -left-1/4 opacity-15 -bottom-52 lg:scale-150 xl:scale-105 scale-[2]
@@ -44,4 +43,3 @@ const HeroSection = () => {
 	);
 };
 export default HeroSection;
-//sss

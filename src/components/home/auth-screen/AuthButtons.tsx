@@ -16,18 +16,19 @@ const AuthButtons = () => {
 
 	return (
 		<>
-		{loading && <Loading />}
+		{ loading && <Loading />}
 		<div className='flex gap-3 flex-1 md:flex-row flex-col'>
-			<RegisterLink className='flex-1' onClick={handleClick}>
+			<RegisterLink className='flex-1' onClick={handleClick} href="/signup">
 				<Button style={{ backgroundColor: "black" }} className='w-full text-black' variant={"outline"} disabled={loading}>
 					Sign up
 				</Button>
 			</RegisterLink>
-			<LoginLink className='flex-1' onClick={handleClick}>
+			<LoginLink className='flex-1' onClick={handleClick} href="/login">
 				<Button style={{ backgroundColor: "#3A3A3A" }} className='w-full' disabled={loading}>
 					Login
 				</Button>
 			</LoginLink>
+		
 		</div>
 		</>
 	);

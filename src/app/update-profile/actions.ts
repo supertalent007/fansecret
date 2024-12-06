@@ -4,13 +4,16 @@ import prisma from "@/db/prisma";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { User } from "@prisma/client";
 import { revalidatePath } from "next/cache";
+import bcrypt from "bcrypt";
 
 export async function getUserProfileAction() {
 	const { getUser } = getKindeServerSession();
 	const user = await getUser();
 
 	if (!user) return null;
-
+	const customerId = await bcrypt.hash(Date.now().toString(), 10);
+	const referralId = await bcrypt.hash(Date.now().toString(), 10);
+	
 	try {
 		const currentUser = await prisma.user.findUnique({ where: { id: user.id } });
 		console.log("app\\update-profile\\action", user)
@@ -23,8 +26,8 @@ export async function getUserProfileAction() {
 				image: user.picture,
 				isSubscribed: false,
 				isCreater:false,
-				customerId:"4",
-				referralId: "default-referral-id",
+				customerId:customerId,
+				referralId: referralId,
 			  }
 
 			const users = await prisma.user.create({
