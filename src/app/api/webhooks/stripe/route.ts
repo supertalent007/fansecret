@@ -105,7 +105,7 @@ export async function POST(req: Request) {
 									subject: "Subscription Confirmation",
 									react: WelcomeEmail({
 										userEmail: customerDetails.email,
-										userName: user.name,
+										userName: user.name ?? "",
 										subscriptionStartDate: subscription.startDate,
 										subscriptionEndDate: subscription.endDate,
 									}),

@@ -61,19 +61,19 @@ export const GET = async (req: any, { params }: any) => {
       where: {
         OR: [
           {
-            senderId: senderId,
-            receiverId: receiverId,
+            senderId: senderId ?? "",
+            receiverId: receiverId ?? "",
           },
           {
-            senderId: receiverId,
-            receiverId: senderId,
+            senderId: receiverId ?? "",
+            receiverId: senderId ?? "",
           }
         ]
 
       },
     });
     console.log(messages, "messages");
-    const sortedMessages = messages.sort((a: Message, b: Message) => {
+    const sortedMessages = [...messages].sort((a, b) => {
       // return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
     });

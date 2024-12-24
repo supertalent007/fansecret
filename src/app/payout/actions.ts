@@ -11,6 +11,7 @@ type PostArgs = {
   mediaType?: "image" | "video";
   isPublic: boolean;
   tags: any;
+  collaboratetags: any;
   sheduled: any;
 };
 
@@ -20,6 +21,7 @@ export async function createPostAction({
   mediaType,
   text,
   tags,
+  collaboratetags,
   sheduled,
 }: PostArgs) {
   const admin = await checkIfAdmin();
@@ -36,6 +38,7 @@ export async function createPostAction({
     isPublic,
     admin?.id,
     tags,
+    collaboratetags,
     sheduled
   );
 
@@ -47,6 +50,7 @@ export async function createPostAction({
       isPublic,
       userId: admin?.id,
       hashtags: tags,
+      collaboratetags: collaboratetags,
       isSheduled: sheduled.toString(),
     },
   });

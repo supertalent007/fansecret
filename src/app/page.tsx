@@ -8,14 +8,15 @@ export default async function Home() {
   let onBoarded = false;
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  console.log("real user id1: app\\page", user?.id)
+  console.log("real user id: app\\page", user)
+  console.log("real user id: app\\page", user?.id)
   if (user) { //gmail exist?
     const onboardedUser = await prisma.user.findUnique({
       where: { id: user.id },
     });
 
     console.log("EXISTING ID: app\\page", user.id ); 
-    onBoarded = onboardedUser?.isVerified ?? false;
+    onBoarded = (onboardedUser?.isVerified || onboardedUser?.isVerifySubmitted) ?? false;
     console.log("onBoarded: app\\page", onBoarded);
     console.log("this is user", user);
   } else {

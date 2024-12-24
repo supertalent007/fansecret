@@ -50,7 +50,7 @@ const UpdateProfileForm = () => {
 
 	useEffect(() => {
 		if (userProfile) {
-			setName(userProfile.name);
+			setName(userProfile.name ?? "");
 		}
 	}, [userProfile]);
 

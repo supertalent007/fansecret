@@ -99,7 +99,8 @@ const Page = () => {
                         />
 
                         <LoginLink authUrlParams={{
-                            connection_id: 'conn_01927c776912fadb76f4cf992a79b07f',
+                            // connection_id: 'conn_01927c776912fadb76f4cf992a79b07f',
+                            connection_id: 'conn_0193dbd2d48d5460e981e5c2043dd686',
                             login_hint: email
                         }}>
                             <button className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Login</button>

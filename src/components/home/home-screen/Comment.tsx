@@ -9,11 +9,17 @@ type CommentWithUser = Prisma.CommentGetPayload<{
 }>;
 
 const Comment = ({ comment }: { comment: CommentWithUser }) => {
+	let username;
+	if (comment && comment.user && comment.user.name) {
+		username = comment.user.name[0];
+	} else {
+		username = ""; // Provide default or handle missing data
+	}
 	return (
 		<div className='flex gap-2 border-b py-2'>
 			<Avatar>
 				<AvatarImage src={comment.user.image || "/user-placeholder.png"} className='object-cover' />
-				<AvatarFallback>{comment.user.name[0]}</AvatarFallback>
+				<AvatarFallback>{username}</AvatarFallback>
 			</Avatar>
 			<div className='flex flex-col w-full'>
 				<div className='flex justify-between items-center'>

@@ -13,7 +13,7 @@ const Page = () => {
 	const [lastname, setLastname] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
+	// const [confirmPassword, setConfirmPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isViewContent, setIsViewContent] = useState(false);
 	const [termsAccepted, setTermsAccepted] = useState(false); // State for "Terms and Conditions" checkbox
@@ -34,7 +34,7 @@ const Page = () => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ username, email, password }),
+				body: JSON.stringify({ firstname, email, password }),
 			});
 
 			const data = await response.json();
@@ -57,9 +57,19 @@ const Page = () => {
 		}
 	};
 
+	const handleChangeFirstname = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setFirstname(event.target.value);
+		localStorage.setItem("isViewContent", event.target.value);
+	};
+
+	const handleChangeLastname = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setLastname(event.target.value);
+		localStorage.setItem("lastname", event.target.value);
+	};
+
 	const saveIsViewContent = () => {
-		localStorage.setItem("isViewContent", !isViewContent ? "true" : "false");
 		setIsViewContent(!isViewContent);
+		localStorage.setItem("isViewContent", !isViewContent ? "true" : "false");
 	}
 
 	return (
@@ -93,24 +103,22 @@ const Page = () => {
 							type="text"
 							id="firstname"
 							value={firstname}
-							onChange={(e) => setFirstname(e.target.value)}
+							onChange={(e) => handleChangeFirstname(e)}
 							className="border border-gray-300 p-2 rounded-md"
-							placeholder="first name"
+							placeholder="Firstname"
 							style={{ background: "#fafbff", color: "#808080" }}
 							required
 						/>
-
 						<input
 							type="text"
 							id="lastname"
 							value={lastname}
-							onChange={(e) => setLastname(e.target.value)}
+							onChange={(e) => handleChangeLastname(e)}
 							className="border border-gray-300 p-2 rounded-md"
-							placeholder="last name"
+							placeholder="Lastname"
 							style={{ background: "#fafbff", color: "#808080" }}
 							required
 						/>
-
 						<input
 							type="email"
 							id="email"
@@ -121,33 +129,6 @@ const Page = () => {
 							style={{ background: "#fafbff", color: "#808080" }}
 							required
 						/>
-
-						{/* Password */}
-						{/* <label htmlFor="password" className="text-sm font-semibold">Password</label>
-							<input
-								type="password"
-								id="password"
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-								className="border border-gray-300 p-2 rounded-md"
-								placeholder="Enter your password"
-								required
-							/> */}
-
-						{/* Confirm Password */}
-						{/* <label htmlFor="confirm-password" className="text-sm font-semibold">Confirm Password</label>
-							<input
-								type="password"
-								id="confirm-password"
-								value={confirmPassword}
-								onChange={(e) => setConfirmPassword(e.target.value)}
-								className="border border-gray-300 p-2 rounded-md"
-								placeholder="Confirm your password"
-								required
-							/> */}
-
-						{/* Terms and Conditions */}
-
 						<div style={{ textAlign: 'left' }}>
 							<div style={{ display: 'flex', marginBottom: '7px' }}>
 								<input
@@ -176,7 +157,8 @@ const Page = () => {
 						</div>
 
 						<RegisterLink authUrlParams={{
-							connection_id: 'conn_01927c776912fadb76f4cf992a79b07f',
+							// connection_id: 'conn_01927c776912fadb76f4cf992a79b07f',
+							connection_id: 'conn_0193dbd2d48d5460e981e5c2043dd686',
 							login_hint: email
 						}}>
 							<button type="button" className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors" disabled={!termsAccepted}>Create Account</button>

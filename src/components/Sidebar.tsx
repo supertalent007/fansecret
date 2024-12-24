@@ -39,7 +39,7 @@
 //   	label: "Profile",
 //   	href: "/update-profile",
 //   },
-  
+
 //   {
 //     icon: Coins,
 //     label: "Premium",
@@ -190,7 +190,7 @@ import {
   User,
   Bell,
   Coins,
- // MessageCircle,
+  // MessageCircle,
   MessageCircleMore,
   Lock,
   Settings,
@@ -215,17 +215,16 @@ const SIDEBAR_LINKS = [
     icon: Home,
     label: "Home",
     href: "/",
-  },  {
-  	icon: User,
-  	label: "Profile",
-  	href: "/update-profile",
+  }, {
+    icon: User,
+    label: "Profile",
+    href: "/update-profile",
   },
-  
-  {
-    icon: Coins,
-    label: "Premium",
-    href: "/merch",
-  },
+  // {
+  //   icon: Coins,
+  //   label: "Premium",
+  //   href: "/merch",
+  // },
   {
     icon: Bell,
     label: "Notifications",
@@ -236,15 +235,15 @@ const SIDEBAR_LINKS = [
     label: "Messages",
     href: "/messages",
   },
-  {
-  	icon: PieChart,
-  	label: "Admin",
-  	href: "/vault",
-  },
+  // {
+  // 	icon: PieChart,
+  // 	label: "Admin",
+  // 	href: "/vault",
+  // },
   {
     icon: DollarSign,
     label: "Financials",
-    href: "/payout",
+    href: "/credit/manage",
   },
 ];
 
@@ -320,11 +319,16 @@ const Sidebar = async ({ id }: { id: string }) => {
           </div>
 
           <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
             <DropdownMenuSeparator />
             {/*  this will be navigated to the analytics  */}
             {/* <Link href={process.env.STRIPE_BILLING_PORTAL_LINK_DEV + "?prefilled_email=" + user?.email}>   */}
             <Link
+              href="/settings"
+            >
+              <DropdownMenuItem>Your account</DropdownMenuItem>
+            </Link>
+            {/* <Link
               href={
                 process.env.STRIPE_BILLING_PORTAL_LINK_DEV +
                 "?prefilled_email=" +
@@ -332,7 +336,7 @@ const Sidebar = async ({ id }: { id: string }) => {
               }
             >
               <DropdownMenuItem>Your account</DropdownMenuItem>
-            </Link>
+            </Link> */}
             {/* <DropdownMenuSeparator />
 						<Link href={process.env.STRIPE_BILLING_PORTAL_LINK_DEV + "?prefilled_email=" + user?.email}>
 							<DropdownMenuItem>Billing</DropdownMenuItem>

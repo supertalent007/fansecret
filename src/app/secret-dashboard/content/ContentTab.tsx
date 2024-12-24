@@ -33,21 +33,23 @@ import CustomDatePicker from "@/components/ui/datepicker";
 
 const ContentTab = () => {
   const searchParams = useSearchParams();
-	const title = searchParams.get('title');
+  const title = searchParams.get('title');
   const [text, setText] = useState("");
   const [mediaType, setMediaType] = useState<"video" | "image">("video");
   const [isPublic, setIsPublic] = useState<boolean>(false);
   const [mediaUrl, setMediaUrl] = useState<string>("");
   const [tags, setTags] = useState("");
+  const [collaboratetags, setCollaborateTags] = useState("");
   const [price, setPrice] = useState("")
   const [sheduled, setSheduled] = useState<Date | null>(null);
+  const [isCollaborate, setIsCollaborate] = useState(false);
 
   const { toast } = useToast();
 
   const { mutate: createPost, isPending } = useMutation({
     mutationKey: ["createPost"],
     mutationFn: async () =>
-      createPostAction({ text, isPublic, mediaUrl, mediaType, tags, sheduled }),
+      createPostAction({ text, isPublic, mediaUrl, mediaType, tags, collaboratetags, sheduled }),
     onSuccess: () => {
       toast({
         title: "Post Created",
@@ -68,10 +70,15 @@ const ContentTab = () => {
       });
     },
   });
+
+  const onClickCollaborate = () => {
+    setIsCollaborate(true);
+  }
+
   return (
     <>
       <p className="text-3xl my-5 font-bold text-center uppercase">
-     Create New Post
+        Create New Post
       </p>
       <form
         onSubmit={(e) => {
@@ -95,14 +102,14 @@ const ContentTab = () => {
                 id="content"
                 placeholder="Share today's exclusive"
                 required
-                defaultValue={title?title:""}
+                defaultValue={title ? title : ""}
                 onChange={(e) => setText(e.target.value)}
               />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="content">hashtags (comma separated)</Label>
               <Textarea
-              value={tags}
+                value={tags}
                 id="content"
                 placeholder="Share today's exclusive"
                 required
@@ -112,9 +119,9 @@ const ContentTab = () => {
             <div className="grid gap-2">
               <Label htmlFor="content">Price (Optional)</Label>
               <Input
-              value={price}
-              min="0" 
-              type="number"
+                value={price}
+                min="0"
+                type="number"
                 id="price"
                 placeholder="Share today's exclusive"
                 required
@@ -135,7 +142,7 @@ const ContentTab = () => {
                     : "No date selected"}
                 </p>
               </div>
-     
+
             </div>
 
             <Label>Media Type</Label>
@@ -198,6 +205,24 @@ const ContentTab = () => {
                 />
               </div>
             )}
+
+            <Button className="w-full" onClick={onClickCollaborate} >
+              Collaborate
+            </Button>
+
+            {
+              isCollaborate &&
+              <div className="grid gap-2">
+                <Label htmlFor="content">Tag others (comma separated)</Label>
+                <Textarea
+                  value={collaboratetags}
+                  id="content"
+                  placeholder="Collaborate post with others"
+                  required
+                  onChange={(e) => setCollaborateTags(e.target.value)}
+                />
+              </div>
+            }
 
             <div className="flex items-center space-x-2">
               <Checkbox

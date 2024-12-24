@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
+import internal from "stream";
 
 export interface PricingTierFrequency {
   id: string;
@@ -77,22 +78,32 @@ const CheckIcon = ({ className }: { className?: string }) => {
 };
 
 export default function Pricing() {
-  const [notifications, setNotifications] = useState(true);
+  const [notifications, setNotifications] = useState([]);
 
- 
+
 
   const fetchMessages = async () => {
     try {
       const body = {
-      
+
       };
-     
+
     } catch (error) {
       console.log(error, "RESPONSE ERROR");
     }
   };
+
   useEffect(() => {
-   
+    axios.get(`/api/notification/kp_52b059d30d3f473e8d4e718b9c7fdc9e`)
+      .then((notification) => {
+        let notificationData = notification.data;
+        console.log("notificationData: ", notificationData)
+        setNotifications(notificationData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
   }, []);
 
 
@@ -106,13 +117,42 @@ export default function Pricing() {
         </div>
       ) : (
         <>
+          {
+            notifications.map((notification: any, index: number) =>
+              <div
+                key={index}
+                style={{ width: "100%" }}
+                className="w-full flex flex-col items-center"
+              >
+                <div className="mx-auto max-w-7xl w-[100%] hover:bg-gray-50">
+                  <div
+                    style={{ width: "100%", border: "none", outline: "none", }}
+                    className=" h-[6.5rem] flex flex-wrap xl:flex-nowrap items-center bg-white dark:bg-gray-900/80 backdrop-blur-md mx-auto max-w-2xl  xl:mx-0 xl:flex xl:max-w-none w-[100%]  "
+                  >
+                    <div className="p-4  xl:flex-auto  w-[100%]">
+                      <h3 className="text-black dark:text-white text-lg font-bold tracking-tight">
+                      {notification.title}
+                      </h3>
+                      <p className=" text-sm leading-7 text-gray-700 dark:text-gray-400">
+                        {notification.description}
+                      </p>
+                      <p className=" text-sm leading-7 text-[#48628b] ">
+                        {/* <p className=" text-sm leading-7 text-[#c61a1a] dark:text-gray-400"> */}
+                        12/10/2024
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          }
           <div
             style={{ width: "100%" }}
             className="w-full flex flex-col items-center"
           >
             <div className="mx-auto max-w-7xl w-[100%] hover:bg-gray-50">
               <div
-                style={{ width: "100%", border: "none", outline: "none",}}
+                style={{ width: "100%", border: "none", outline: "none", }}
                 className=" h-[6.5rem] flex flex-wrap xl:flex-nowrap items-center bg-white dark:bg-gray-900/80 backdrop-blur-md mx-auto max-w-2xl  xl:mx-0 xl:flex xl:max-w-none w-[100%]  "
               >
                 <div className="p-4  xl:flex-auto  w-[100%]">
@@ -136,7 +176,7 @@ export default function Pricing() {
           >
             <div className="mx-auto max-w-7xl w-[100%] hover:bg-gray-50">
               <div
-                style={{ width: "100%", border: "none", outline: "none",}}
+                style={{ width: "100%", border: "none", outline: "none", }}
                 className=" h-[6.5rem] flex flex-wrap xl:flex-nowrap items-center bg-white dark:bg-gray-900/80 backdrop-blur-md mx-auto max-w-2xl  xl:mx-0 xl:flex xl:max-w-none w-[100%]  "
               >
                 <div className="p-4  xl:flex-auto  w-[100%]">
@@ -160,7 +200,7 @@ export default function Pricing() {
           >
             <div className="mx-auto max-w-7xl w-[100%] hover:bg-gray-50">
               <div
-                style={{ width: "100%", border: "none", outline: "none",}}
+                style={{ width: "100%", border: "none", outline: "none", }}
                 className=" h-[6.5rem] flex flex-wrap xl:flex-nowrap items-center bg-white dark:bg-gray-900/80 backdrop-blur-md mx-auto max-w-2xl  xl:mx-0 xl:flex xl:max-w-none w-[100%]  "
               >
                 <div className="p-4  xl:flex-auto  w-[100%]">
@@ -178,7 +218,7 @@ export default function Pricing() {
               </div>
             </div>
           </div>
-          
+
         </>
       )}
     </div>

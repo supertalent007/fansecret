@@ -23,6 +23,7 @@ const HomeScreen = async ({ query = null }: any) => {
         customerId: "3",
         isCreater: false,
         referralId: "default-referral-id",
+        isBlocked: false,
       };
 
       console.log(user, "USER ACTUAL");
@@ -36,6 +37,16 @@ const HomeScreen = async ({ query = null }: any) => {
       console.log("email", admin);
     
       if (!user) return notFound();
+
+      if (user?.isBlocked === true) {
+        return (
+          <div className="flex max-w-2xl lg:max-w-7xl mx-auto relative">
+            <div className="w-full p-4 text-center text-red-600 font-bold">
+              Your account has been blocked. Please contact support for more information.
+            </div>
+          </div>
+        );
+        }
     
       return (
         <BaseLayout>

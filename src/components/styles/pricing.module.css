@@ -69,6 +69,15 @@
 	animation: roundabout 10s ease-in-out both;
 }
 
+.iconButton {
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.iconButton:hover {
+	color: blue;
+}
+
 /**
   * Glass effect with a gradient background and blur - used for highlighting pricing cards.
   */

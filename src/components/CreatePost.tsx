@@ -1,13 +1,30 @@
 
 
 "use client";
-import React, { useState } from "react";
+  
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {PenBox} from "lucide-react"
 
 const CreatePost = () => {
   const router = useRouter();
   const [query, setQuery] = useState("");
+  const [isBanned, setIsBanned] = useState(false);
+
+  useEffect(() => {
+    const fetchBanStatus = async () => {
+      try {
+        const response = await fetch('/api/admin/bannedactive'); // Replace with your API endpoint
+        const data = await response.json();
+        console.log("3456789: ", data);
+        setIsBanned(data.ban_active === 1? true: false); // Assuming the response has a ban_active field
+      } catch (error) {
+        console.error("Error fetching ban status:", error);
+      }
+    };
+
+    fetchBanStatus();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -53,8 +70,10 @@ const CreatePost = () => {
         />
         <button
           type="submit"
-          className="text-white absolute end-2.5 bottom-2.5 bg-[#E4BEAD] hover:bg-[#e4bead99] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-[#E4BEAD] dark:hover:bg-[#e4beada2] dark:focus:ring-gray-700"
-        >
+          //className="text-white absolute end-2.5 bottom-2.5 bg-[#E4BEAD] hover:bg-[#e4bead99] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-[#E4BEAD] dark:hover:bg-[#e4beada2] dark:focus:ring-gray-700"
+          className={`text-white absolute end-2.5 bottom-2.5 bg-[#E4BEAD] hover:bg-[#e4bead99] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-[#E4BEAD] dark:hover:bg-[#e4beada2] dark:focus:ring-gray-700 ${isBanned ? 'opacity-50 cursor-not-allowed' : ''}`}
+          // disabled>
+          >
           Post
         </button>
       </div>

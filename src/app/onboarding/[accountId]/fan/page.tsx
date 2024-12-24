@@ -9,22 +9,20 @@ import FanVerificationForm from "@/components/onboarding/FanVerificationForm";
 // ];
 
 const sizeMap: { [key: string]: string } = {
-	sm: "Small",
-	md: "Medium",
-	lg: "Large",
+  sm: "Small",
+  md: "Medium",
+  lg: "Large",
 };
 
 
-const Page = ({params} : any) => {
-    const user = params.accountId
-    console.log("USER FROM PARAMS", user)
+const Page = ({ params }: any) => {
+  const user = params.accountId
+  console.log("USER FROM PARAMS", user)
 
   return (
     <BaseLayout renderRightPanel={false}>
       <div className="mt-5"></div>
-
-<FanVerificationForm user={user}/>
-
+      <FanVerificationForm user={user} />
     </BaseLayout>
   );
 };

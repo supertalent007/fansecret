@@ -12,20 +12,29 @@ datasource db {
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
-  name         String
+  name    String?   
+  firstname    String?   
+  lastname     String?
+  username     String?   @unique
+  birthday     String?
   image        String?
   isSubscribed Boolean  @default(false)
   customerId   String?  @unique // Stripe customer id
   isCreater    Boolean  @default(false)
   isVerified   Boolean? @default(false)
+  isVerifySubmitted Boolean? @default(false)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-  credits Int       @default(0)
-  subscription  Subscription?
-  orders        Order[]
-  comments      Comment[]
-  likes         Like[]
+  credits      Int @default(0)
+  subscription Subscription?
+  orders       Order[]
+  comments     Comment[]
+  likes        Like[]
   notifications Notifications[]
+  isBlocked Boolean @default(false)
+  financeVerificationFileLink String?
+  idVerificationFileLink String?
+  selfieLink String?
 
   
   messages Message[] @relation("Sender")
@@ -39,8 +48,6 @@ model User {
 
   referralId String  @unique
   referredBy String?
-
-
 }
 
 model Message {
@@ -54,8 +61,12 @@ model Message {
   receiver User @relation("Receiver", fields: [receiverId], references: [id])
 }
 
-
-
+model AdminMessage {
+  id        Int      @id @default(autoincrement())
+  m_title   String
+  m_content   String
+  createdAt DateTime @default(now())
+}
 
 model Post {
   id         String    @id @default(cuid())
@@ -67,9 +78,11 @@ model Post {
   isPublic   Boolean   @default(false)
   isSheduled String?
   hashtags   String?
+  collaboratetags String?
   price      Int?
   comments   Comment[]
   likesList  Like[]
+  isChecked  Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -173,3 +186,56 @@ model Purchases {
     seller   User @relation("Seller", fields: [sellerId], references: [id])
     buyer User @relation("Buyer", fields: [buyerId], references: [id])
 }
+
+model Admin {
+    id   Int @id  @default(autoincrement())
+    name String
+    email String
+    createdAt DateTime @default(now())
+}
+model BannedWord {
+    id   Int @id  @default(autoincrement())
+    word String
+    banned_state Boolean
+    createdAt DateTime @default(now())
+}
+
+model BannedList {
+    id   Int @id  @default(autoincrement())
+    ban_active Boolean @default(false)
+}
+
+model BannedBehavior {
+    id   Int @id  @default(autoincrement())
+    senderId String
+    receiverId String
+    bannedword String
+    send_content String
+    send_time DateTime @default(now())
+}
+ 
+model BannedActive {
+    id   Int @id  @default(autoincrement())
+    ban_active Boolean @default(false)
+ 
+}
+
+model CreditHistory {
+  id String @id @default(cuid())
+  userId String
+  amount Float 
+  type String
+  fromUserId String
+  toUserId String
+  createdAt DateTime @default(now())
+}
+
+model FinanceHistory {
+  id String @id @default(cuid())
+  userId String
+  amount Float 
+  type String
+  createdAt DateTime @default(now())
+}
+
+

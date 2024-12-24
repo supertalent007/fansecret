@@ -16,14 +16,13 @@ export const POST = async (req: any, { params }: any) => {
         const updatedUser = await prisma.user.findMany({
             where: {
                 id: {
-                  not: loggedInUserId, // Exclude the logged-in user's ID
+                  not: receiverId, // Exclude the logged-in user's ID
                 },
               },
               select: {
                 id: true,
                 name: true,
                 email: true,
-                age: true, // Include other fields as needed
               },
         });
 

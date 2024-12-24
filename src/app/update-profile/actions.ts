@@ -28,6 +28,7 @@ export async function getUserProfileAction() {
 				isCreater:false,
 				customerId:customerId,
 				referralId: referralId,
+				isBlocked: false,
 			  }
 
 			const users = await prisma.user.create({

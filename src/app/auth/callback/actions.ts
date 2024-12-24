@@ -2,6 +2,7 @@
 
 import prisma from "@/db/prisma";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import bcrypt from "bcrypt";
 
 export async function checkAuthStatus() {
 	console.log("hereeeee")
