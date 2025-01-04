@@ -106,7 +106,7 @@ const Page = () => {
 							onChange={(e) => handleChangeFirstname(e)}
 							className="border border-gray-300 p-2 rounded-md"
 							placeholder="Firstname"
-							style={{ background: "#fafbff", color: "#808080" }}
+							style={{ background: "#fafbff", color: "#808080", width: "100%" }}
 							required
 						/>
 						<input
@@ -116,7 +116,7 @@ const Page = () => {
 							onChange={(e) => handleChangeLastname(e)}
 							className="border border-gray-300 p-2 rounded-md"
 							placeholder="Lastname"
-							style={{ background: "#fafbff", color: "#808080" }}
+							style={{ background: "#fafbff", color: "#808080", width: "100%" }}
 							required
 						/>
 						<input
@@ -126,10 +126,10 @@ const Page = () => {
 							onChange={(e) => setEmail(e.target.value)}
 							className="border border-gray-300 p-2 rounded-md"
 							placeholder="Enter your email"
-							style={{ background: "#fafbff", color: "#808080" }}
+							style={{ background: "#fafbff", color: "#808080", width: "100%" }}
 							required
 						/>
-						<div style={{ textAlign: 'left' }}>
+						<div style={{ textAlign: 'left', width: "100%" }}>
 							<div style={{ display: 'flex', marginBottom: '7px' }}>
 								<input
 									type="checkbox"

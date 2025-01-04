@@ -58,6 +58,8 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
 					step={10}
 					className="w-4/5 px-4 py-2 border border-gray-300 rounded-md"
 					style={{ marginBottom: "5px", background: "#fafbff", color: "#121212" }}
+					disabled
+					readOnly
 				/>
 			</div>
 			<input
@@ -69,7 +71,8 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
 				onChange={handleSliderChange}
 				className="w-full appearance-none rounded-lg"
 				style={{
-					cursor: "pointer"
+					cursor: "pointer",
+					background: "#808080"
 				}}
 			/>
 		</div>
@@ -166,6 +169,8 @@ export default function CreditPurchase() {
 									value={creditAmount}
 									className="w-4/5 px-4 py-2 border border-gray-300 rounded-md"
 									style={{ marginBottom: "5px", background: "#fafbff", color: "#121212" }}
+									disabled
+									readOnly
 								/>
 							</div>
 						</div>

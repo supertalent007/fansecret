@@ -93,18 +93,25 @@ const Page = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="border border-gray-300 p-2 rounded-md"
-                            style={{ background: '#fafbff', color: "#808080" }}
+                            style={{ background: '#fafbff', color: "#808080", width: "100%" }}
                             placeholder="Enter your email"
                             required
                         />
 
-                        <LoginLink authUrlParams={{
+                        <LoginLink style={{ width: "100%" }} authUrlParams={{
                             // connection_id: 'conn_01927c776912fadb76f4cf992a79b07f',
                             connection_id: 'conn_0193dbd2d48d5460e981e5c2043dd686',
                             login_hint: email
                         }}>
-                            <button className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Login</button>
+                            <button style={{ width: "100%" }}  className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Login</button>
                         </LoginLink>
+						<LoginLink className={styles.googleButton} style={{ borderRadius: "0.5rem", height: "40px" }}
+							authUrlParams={{
+								// connection_id: 'conn_01927e7135c4f2b23cbe7a9b52130357'
+								connection_id: 'conn_0193ddea33fd575f9a96199ed9f66406'
+							}}>
+							Login with Google
+						</LoginLink>
 
                     </div>
 

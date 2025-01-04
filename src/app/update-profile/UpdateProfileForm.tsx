@@ -105,7 +105,6 @@ const UpdateProfileForm = () => {
 								return (
 									<Button
 										onClick={() => open()}
-										variant={"outline"}
 										type='button'
 										className='w-full mt-2 mb-4'
 									>
@@ -114,7 +113,6 @@ const UpdateProfileForm = () => {
 								);
 							}}
 						</CldUploadWidget>
-
 						<Button className='w-full' type='submit' disabled={isPending}>
 							{isPending ? "Updating..." : "Update"}
 						</Button>
