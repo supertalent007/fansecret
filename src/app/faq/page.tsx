@@ -46,10 +46,7 @@ const Page = () => {
             title: "Can I create collaborative content?",
             content: "Yes. When posting new content, creators can click the @ button to tag the other creators who appear in the content. The tagged creator will receive a notification that they were tagged in a new post and they will be able to check the content and approve or deny it. We do not allow any non-Fanssecret-users to appear in any images or videos on FansSecret."
         },
-        {
-            title: "Is adult content allowed on FansSecret?",
-            content: "Yes. Adult content is allowed on FansSecret. We comply with the necessary laws and employ the necessary policies to allow the sharing of adult content."
-        }
+
     ];
 
     const [activeIndex, setActiveIndex] = useState(-1);
