@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image";
-import { useState } from "react"; // Import useState hook
+import { SetStateAction, useState } from "react"; // Import useState hook
 //import AuthButtons from "@/components/homeAuthButtons";
 import {
 	RegisterLink,
@@ -13,6 +13,9 @@ const Page = () => {
 	const [lastname, setLastname] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [isChecked, setIsChecked] = useState(false)
+
+
 	// const [confirmPassword, setConfirmPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const [isViewContent, setIsViewContent] = useState(false);
@@ -72,6 +75,10 @@ const Page = () => {
 		localStorage.setItem("isViewContent", !isViewContent ? "true" : "false");
 	}
 
+	const handleCheckboxChange = () => {
+		setIsChecked(!isChecked)
+	}
+
 	return (
 		<div className='flex h-screen w-full'>
 			<div className='flex-1 flex overflow-hidden bg-[#ffa885] relative justify-center items-center z-10 bg-noise'>
@@ -98,14 +105,14 @@ const Page = () => {
 					<div className={styles.authMethods}>
 						{/* <form onSubmit={handleSignUp} className="flex flex-col gap-4"> */}
 						{/* Username */}
-						<br />
+
 						<input
 							type="text"
 							id="firstname"
 							value={firstname}
 							onChange={(e) => handleChangeFirstname(e)}
 							className="border border-gray-300 p-2 rounded-md"
-							placeholder="Firstname"
+							placeholder="First Name"
 							style={{ background: "#fafbff", color: "#808080", width: "100%" }}
 							required
 						/>
@@ -115,7 +122,7 @@ const Page = () => {
 							value={lastname}
 							onChange={(e) => handleChangeLastname(e)}
 							className="border border-gray-300 p-2 rounded-md"
-							placeholder="Lastname"
+							placeholder="Last Name"
 							style={{ background: "#fafbff", color: "#808080", width: "100%" }}
 							required
 						/>
@@ -129,8 +136,33 @@ const Page = () => {
 							style={{ background: "#fafbff", color: "#808080", width: "100%" }}
 							required
 						/>
+
 						<div style={{ textAlign: 'left', width: "100%" }}>
-							<div style={{ display: 'flex', marginBottom: '7px' }}>
+							<label className='themeSwitcherTwo relative inline-flex cursor-pointer select-none items-center'>
+								<input
+									type='checkbox'
+									checked={isChecked}
+									onChange={handleCheckboxChange}
+									className='sr-only'
+								/>
+								<span className='label flex items-center text-sm font-medium text-white'>
+									Fan
+								</span>
+								<span
+									className={`slider mx-4 flex h-8 w-[60px] items-center rounded-full p-1 duration-200 ${isChecked ? 'bg-[#212b36]' : 'bg-[#212b36]'
+										}`}
+								>
+									<span
+										className={`dot h-6 w-6 rounded-full bg-white duration-200 ${isChecked ? 'translate-x-[28px]' : ''
+											}`}
+									></span>
+								</span>
+								<span className='label flex items-center text-sm font-medium text-white'>
+									Creator
+								</span>
+							</label>
+
+							{/* <div style={{ display: 'flex', marginBottom: '7px' }}>
 								<input
 									type="checkbox"
 									id="terms-accepted"
@@ -141,8 +173,8 @@ const Page = () => {
 								<label htmlFor="terms-accepted" className="text-sm">
 									View Content
 								</label>
-							</div>
-							<div style={{ display: 'flex', marginBottom: '7px' }}>
+							</div> */}
+							<div style={{ display: 'flex', marginBottom: '10px', marginTop: '10px' }}>
 								<input
 									type="checkbox"
 									id="terms-accepted"
@@ -161,7 +193,7 @@ const Page = () => {
 							connection_id: 'conn_0193dbd2d48d5460e981e5c2043dd686',
 							login_hint: email
 						}}>
-							<button type="button" className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors" style={{ width: "100%" }} disabled={!termsAccepted}>Create Account</button>
+							<button type="button" className="bg-black cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-blue-600" style={{ width: "100%", transition: 'background-color 0.3s ease' }} disabled={!termsAccepted}>Create Account</button>
 						</RegisterLink>
 						<RegisterLink className={styles.googleButton} style={{ borderRadius: "0.5rem", height: "40px" }}
 							authUrlParams={{
