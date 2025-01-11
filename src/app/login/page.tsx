@@ -103,15 +103,15 @@ const Page = () => {
                             connection_id: 'conn_0193dbd2d48d5460e981e5c2043dd686',
                             login_hint: email
                         }}>
-                            <button style={{ width: "100%" }}  className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Login</button>
+                            <button type="button" className="bg-black cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-blue-600" style={{ width: "100%", transition: 'background-color 0.3s ease' }}>Login</button>
                         </LoginLink>
-						<LoginLink className={styles.googleButton} style={{ borderRadius: "0.5rem", height: "40px" }}
-							authUrlParams={{
-								// connection_id: 'conn_01927e7135c4f2b23cbe7a9b52130357'
-								connection_id: 'conn_0193ddea33fd575f9a96199ed9f66406'
-							}}>
-							Login with Google
-						</LoginLink>
+                        <LoginLink className={styles.googleButton} style={{ borderRadius: "0.5rem", height: "40px" }}
+                            authUrlParams={{
+                                // connection_id: 'conn_01927e7135c4f2b23cbe7a9b52130357'
+                                connection_id: 'conn_0193ddea33fd575f9a96199ed9f66406'
+                            }}>
+                            Login with Google
+                        </LoginLink>
 
                     </div>
 
