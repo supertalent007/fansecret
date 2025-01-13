@@ -15,19 +15,19 @@ export default async function Home() {
       where: { id: user.id },
     });
 
-    console.log("EXISTING ID: app\\page", user.id ); 
+    console.log("EXISTING ID: app\\page", user.id);
     onBoarded = (onboardedUser?.isVerified || onboardedUser?.isVerifySubmitted) ?? false;
     console.log("onBoarded: app\\page", onBoarded);
     console.log("this is user", user);
   } else {
     console.log("No user found");
   }
-  
+
   return (
     <main>
       {user ? (
         !onBoarded ? (
-          <OnboardingScreen user={user.id}/>
+          <OnboardingScreen user={user.id} />
         ) : (
           <HomeScreen />
         )

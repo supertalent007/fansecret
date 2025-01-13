@@ -240,7 +240,7 @@ const Page = () => {
 					<div className="mt-4 text-center">
 						<p>
 							Already have an account?{" "}
-							<a href="/login" className="text-blue-500 hover:underline">
+							<a href="/login" className="text-black hover:underline">
 								Log in
 							</a>
 						</p>

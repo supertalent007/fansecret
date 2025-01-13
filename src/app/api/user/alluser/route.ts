@@ -1,37 +1,26 @@
 import prisma from "@/db/prisma";
 
-export const POST = async (req: any, { params }: any) => {
-    try {
-        const { receiverId } = params;
-        console.log(receiverId, "RECEIVER ID123")
-        const body = await req.json();
-        console.log(body, "REQUEST BODY")
+export const GET = async (req: any) => {
+  try {
+    const url = new URL(req.url);
+    const receiverId = url.searchParams.get("receiverId");
+    console.log(receiverId, "RECEIVER ID");
 
-        // const message = {
-        //     content: body.content,
-        //     senderId: body.senderId,
-        //     receiverId: receiverId
-        // }
+    const allUsers = await prisma.user.findMany({
+      where: receiverId ? { id: { not: receiverId } } : undefined,
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
 
-        const updatedUser = await prisma.user.findMany({
-            where: {
-                id: {
-                  not: receiverId, // Exclude the logged-in user's ID
-                },
-              },
-              select: {
-                id: true,
-                name: true,
-                email: true,
-              },
-        });
-
-        return new Response(JSON.stringify(updatedUser), {
-            status: 200,
-            headers: { "Content-Type": "application/json" },
-        });
-    }
-    catch {
-
-    }
-}
+    return new Response(JSON.stringify(allUsers), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    return new Response("Error fetching users", { status: 500 });
+  }
+};

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 type User = {
-  userID: string;
+  id: string;
   name: string;
   age: number;
   email: string;
@@ -14,25 +14,25 @@ type User = {
 
 const UserManage = () => {
 
-    const [users, setUsers] = useState<User[]>([]);
-	const [searchQuery, setSearchQuery] = useState("");
+  const [users, setUsers] = useState<User[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-	const fetchUsers = async (query: string) => {
-		const response = await fetch(`/api/user/alluser?query=${query}`);
-		const data = await response.json();
-		setUsers(data);
-	};
+  const fetchUsers = async (query: string) => {
+    const response = await fetch(`/api/user/alluser?query=${query}`);
+    const data = await response.json();
+    setUsers(data);
+  };
 
-    useEffect(() => {
-		// Fetch all users initially
-		fetchUsers("");
-	}, []);
+  useEffect(() => {
+    // Fetch all users initially
+    fetchUsers("");
+  }, []);
 
-	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const query = e.target.value;
-		setSearchQuery(query);
-		fetchUsers(query);
-	};
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    fetchUsers(query);
+  };
 
   return (
     <table className="table-auto w-full border-collapse border border-gray-300">
@@ -46,8 +46,8 @@ const UserManage = () => {
       </thead>
       <tbody>
         {users.map((user) => (
-          <tr key={user.userID} className="hover:bg-gray-100">
-            <td className="border border-gray-300 p-2">{user.userID}</td>
+          <tr key={user.id} className="hover:bg-gray-100">
+            <td className="border border-gray-300 p-2">{user.id}</td>
             <td className="border border-gray-300 p-2">{user.name}</td>
             <td className="border border-gray-300 p-2">{user.age}</td>
             <td className="border border-gray-300 p-2">{user.email}</td>

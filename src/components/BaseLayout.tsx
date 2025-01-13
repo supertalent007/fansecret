@@ -14,24 +14,24 @@ const BaseLayout = async ({
 }) => {
 
 	const { isAuthenticated } = getKindeServerSession();
-	const {getUser}= getKindeServerSession()
+	const { getUser } = getKindeServerSession()
 	const user = await getUser()
 	const isAdmin = process.env.ADMIN_EMAIL === user?.email;
 
-	if (!(await isAuthenticated())) {
-		return redirect("/");
-	}
-	
+	// if (!(await isAuthenticated())) {
+	// 	return redirect("/");
+	// }
+
 	return (
-	<div className='flex max-w-2xl lg:max-w-7xl mx-auto relative'>
-		{/* <div className='flex max-w-2xl mx-auto relative' style={{marginLeft: 'unset', maxWidth: '100%'}}> */}
-		<Sidebar id={user?.id ?? ""} />
-		<div className='w-full lg:w-3/5 flex flex-col'>{children}</div> 
-		{/* </div><div className='w-full flex flex-col border-r'>{children}</div> */}
-		{renderRightPanel && <SuggestedProducts />}
-	</div>
+		<div className='flex max-w-2xl lg:max-w-7xl mx-auto relative'>
+			{/* <div className='flex max-w-2xl mx-auto relative' style={{marginLeft: 'unset', maxWidth: '100%'}}> */}
+			<Sidebar id={user?.id ?? ""} />
+			<div className='w-full lg:w-3/5 flex flex-col'>{children}</div>
+			{/* </div><div className='w-full flex flex-col border-r'>{children}</div> */}
+			{renderRightPanel && <SuggestedProducts />}
+		</div>
 	);
-	
+
 };
 
 export default BaseLayout;
