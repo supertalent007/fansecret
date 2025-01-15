@@ -10,7 +10,7 @@ const PaymentsTab = async () => {
 	return (
 		<>
 			<div className='flex justify-between items-center mt-10'>
-				<Card style={{marginLeft:"10px"}}
+				<Card style={{ marginLeft: "10px" }}
 				>
 					<CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2 '>
 						<CardTitle className='text-sm font-medium '>Available Balance</CardTitle>
@@ -21,17 +21,17 @@ const PaymentsTab = async () => {
 					</CardContent>
 				</Card>
 
-			{/* <Button style={{ backgroundColor: "#3A3A3A" , marginRight:"10px"}}>Request Amount</Button> */}
-			<Button style={{marginRight:"10px"}} className=' flex gap-10' variant={"outline"}>
-								<span className='uppercase font-semibold tracking-wide'>Request Amount</span>
-							</Button>
-			
+				{/* <Button style={{ backgroundColor: "#3A3A3A" , marginRight:"10px"}}>Request Amount</Button> */}
+				<Button style={{ marginRight: "10px" }} className=' flex gap-10' variant={"outline"}>
+					<span className='uppercase font-semibold tracking-wide'>Request Amount</span>
+				</Button>
 
-			
+
+
 			</div>
 
 			<div className='flex flex-wrap gap-5 my-5 ml-3 mt-10'>
-			<div className="text-md text-stone-300">Your payment will be processed within a 5-7 business days. If you have any questions or need further assistance, please don’t hesitate to reach out to our support team.</div>
+				<div className="text-md text-stone-300">Your payment will be processed within a 5-7 business days. If you have any questions or need further assistance, please don’t hesitate to reach out to our support team.</div>
 			</div>
 		</>
 	);
