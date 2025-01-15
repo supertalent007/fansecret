@@ -55,7 +55,7 @@
 //       {loading && <Loading />}
 //       {chatLoading && <LoadingWithoutImage/>}
 //       {/* <Sidebar id={id} /> */}
-      
+
 //       <div className=" w-[40vw]  lg:w-4.8/5 flex flex-col  border-r">
 //         {fetchedUsers?.map((user: any) => {
 //           if (user) {
@@ -92,7 +92,7 @@
 // };
 // export default Page;
 
-
+import React, { Suspense } from 'react';
 import BaseLayout from "@/components/BaseLayout";
 
 import Messages from "@/components/Messages";
@@ -105,11 +105,13 @@ import Messages from "@/components/Messages";
 
 const Page = () => {
 
-  
+
   return (
     <BaseLayout renderRightPanel={false}>
-      <div className="mt-5"></div>
-      <Messages />
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className="mt-5"></div>
+        <Messages />
+      </Suspense>
     </BaseLayout>
   );
 };
