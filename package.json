@@ -4,6 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "concurrently \"next dev\" \"nodemon src/app/api/socketserver.js\"",
+		"dev-client": "next dev",
+		"dev-api": "nodemon src/app/api/socketserver.js",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
